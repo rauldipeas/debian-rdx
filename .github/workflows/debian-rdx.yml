@@ -28,7 +28,14 @@ jobs:
         with:
           name: debian-rdx
           path: ./debian-rdx*.iso
-      - name: SFTP Deploy
+      - name: MEGA upload
+        uses: Siege-Wizard/mega-upload@1.0.1
+        with:
+          file: ./debian-rdx*.iso
+        env:
+          USERNAME: ${{ secrets.MEGA_USERNAME }}
+          PASSWORD: ${{ secrets.MEGA_PASSWORD }}
+      - name: SFTP upload
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           username: rauldipeas
@@ -38,4 +45,4 @@ jobs:
           remote_path: '/home/pfs/project/debian-rdx'
           sftp_only: true
           ssh_private_key: ''
-          password: ${{ secrets.SFTP_PASS }}
+          password: ${{ secrets.SFTP_PASSWORD }}
