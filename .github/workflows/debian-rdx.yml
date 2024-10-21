@@ -31,7 +31,7 @@ jobs:
       - name: MEGA upload
         uses: Difegue/action-megacmd@master
         with:
-          args: put ./debian-rdx*.iso /debian-rdx/
+          args: put -c ./debian-rdx*.iso /debian-rdx/
         env:
           USERNAME: ${{ secrets.MEGA_USERNAME }}
           PASSWORD: ${{ secrets.MEGA_PASSWORD }}
