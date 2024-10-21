@@ -14,7 +14,7 @@ lb config \
     --distribution bookworm \
     --image-name "debian-rdx" \
     --iso-application "Debian" \
-    --iso-publisher "Debian; https://debian-rdx.surge.sh; debian-rdx.rauldipeas@lock.email" \
+    --iso-publisher "Debian; https://debian-rdx.sourceforge.io; debian-rdx.rauldipeas@lock.email" \
     --iso-volume "Debian" \
     --mirror-bootstrap "https://deb.debian.org/debian/" \
     --mirror-binary "https://deb.debian.org/debian/" \
