@@ -29,9 +29,9 @@ jobs:
           name: debian-rdx
           path: ./debian-rdx*.iso
       - name: MEGA upload
-        uses: Siege-Wizard/mega-upload@1.0.1
+        uses: Difegue/action-megacmd@master
         with:
-          file: ./debian-rdx*.iso
+          args: put ./debian-rdx*.iso /debian-rdx/
         env:
           USERNAME: ${{ secrets.MEGA_USERNAME }}
           PASSWORD: ${{ secrets.MEGA_PASSWORD }}
