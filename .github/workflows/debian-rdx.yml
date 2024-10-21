@@ -1,0 +1,41 @@
+name: Debian
+on:
+  push:
+    branches:
+      - 'main'
+    paths-ignore:
+      - '.editorconfig'
+      - '.gitignore'
+      - 'leiame.md'
+      - 'readme.md'
+      - 'to-do.log'
+      - '*.jpg'
+      - '*.png'
+      - '*.svg'
+      - 'site/**'
+      - 'site-deploy.ps1'
+  schedule:
+    - cron:  '0 */12 * * *'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Debian build
+        run: bash scripts/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: debian-rdx
+          path: ./debian-rdx*.iso
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: rauldipeas
+          server: frs.sourceforge.net
+          port: 22
+          local_path: './debian-rdx*.iso'
+          remote_path: '/home/pfs/project/debian-rdx'
+          sftp_only: true
+          ssh_private_key: ''
+          password: ${{ secrets.SFTP_PASS }}
