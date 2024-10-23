@@ -5,7 +5,10 @@ wget -qO /opt/rdx-user-settings/bash/bashrc https://github.com/rauldipeas/debian
 wget -qO /opt/rdx-user-settings/bash/bash-preexec.sh https://github.com/rcaloras/bash-preexec/raw/master/bash-preexec.sh
 wget -qO /opt/rdx-user-settings/bash/atuin.bash https://github.com/rauldipeas/debian-rdx/raw/main/settings/bash/atuin.bash
 wget -qO /opt/rdx-user-settings/bash/liquidprompt.bash https://github.com/rauldipeas/debian-rdx/raw/main/settings/bash/liquidprompt.bash
+wget -qO /opt/rdx-user-settings/bash/local-bin.bash https://github.com/rauldipeas/debian-rdx/raw/main/settings/bash/local-bin.bash
 wget -qO /opt/rdx-user-settings/dconf-settings.ini https://github.com/rauldipeas/debian-rdx/raw/main/settings/dconf-settings.ini
+wget -qO /opt/rdx-user-settings/topgrade-config.toml https://github.com/topgrade-rs/topgrade/raw/main/config.example.toml
+sed -i 's/# no_self_update/no_self_update/g' /opt/rdx-user-settings/topgrade-config.toml
 cat <<EOF |sudo tee /usr/local/share/applications/debianrdx.featurebase.app.desktop
 [Desktop Entry]
 Version=1.0
@@ -40,6 +43,8 @@ if ! [ -f "\$HOME"/.rdx-user-settings ];then
     ln -fs /dev/null "\$HOME"/.config/systemd/pipewire.socket
     #walc
     ln -fs /dev/null "\$HOME"/.local/share/applications/WALC.desktop
+    #topgrade
+    cp /opt/rdx-user-settings/topgrade-config.toml "\$HOME"/.config/topgrade.toml
     touch "\$HOME"/.rdx-user-settings
 fi
 EOF

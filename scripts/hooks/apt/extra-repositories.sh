@@ -8,8 +8,8 @@ wget -cq --show-progress http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubunt
 sudo apt install ./kxstudio-repos*.deb
 rm ./kxstudio-repos*.deb
 # MEGA
-wget -qO- https://mega.nz/keys/MEGA_signing.key|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/mega.gpg>/dev/null
-echo 'deb https://mega.nz/linux/repo/Debian_12/ ./'|sudo tee /etc/apt/sources.list.d/mega.list>/dev/null
+wget -qO- https://mega.nz/keys/MEGA_signing.key|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/megasync.gpg>/dev/null
+echo 'deb https://mega.nz/linux/repo/Debian_12/ ./'|sudo tee /etc/apt/sources.list.d/megasync.list>/dev/null
 # Mozilla Firefox
 wget -qO- https://packages.mozilla.org/apt/repo-signing-key.gpg|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/mozilla.gpg>/dev/null
 echo 'deb https://packages.mozilla.org/apt mozilla main'|sudo tee /etc/apt/sources.list.d/mozilla.list>/dev/null

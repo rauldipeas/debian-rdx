@@ -2462,6 +2462,14 @@ input, select, textarea {
 			margin-left: 0;
 		}
 
+			ul.actions.special img {
+				transition: transform .2s;
+			}
+
+			ul.actions.special img:hover {
+				transform: scale(1.1);
+			}
+
 			ul.actions.special li:first-child {
 				padding-left: 0;
 			}
@@ -3405,13 +3413,14 @@ input, select, textarea {
 		/* List */
 
 			ul.major-icons li {
-				padding: 1.5em;
+				padding: 0.8em;
 				transition: transform .2s;
+				width: 45%;
 			}
 
 			ul.major-icons li:hover {
-				padding: 1.5em;
-				transform: scale(1.2) rotate(4deg);
+				padding: 0.8em;
+				transform: scale(1.1) rotate(4deg);
 			}
 
 				ul.major-icons li .icon {
