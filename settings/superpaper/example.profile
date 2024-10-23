@@ -3,5 +3,5 @@ spanmode=single
 slideshow=true
 delay=120
 sortmode=shuffle
-hotkey=control+super+shift+h
+perspective=default
 display1paths=/usr/share/backgrounds/unsplash

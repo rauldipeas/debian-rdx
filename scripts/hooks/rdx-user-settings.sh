@@ -7,6 +7,9 @@ wget -qO /opt/rdx-user-settings/bash/atuin.bash https://github.com/rauldipeas/de
 wget -qO /opt/rdx-user-settings/bash/liquidprompt.bash https://github.com/rauldipeas/debian-rdx/raw/main/settings/bash/liquidprompt.bash
 wget -qO /opt/rdx-user-settings/bash/local-bin.bash https://github.com/rauldipeas/debian-rdx/raw/main/settings/bash/local-bin.bash
 wget -qO /opt/rdx-user-settings/dconf-settings.ini https://github.com/rauldipeas/debian-rdx/raw/main/settings/dconf-settings.ini
+wget -qO /opt/rdx-user-settings/adaptive.xml https://github.com/rauldipeas/debian-rdx/raw/main/settings/adaptive.xml
+sudo mkdir -p /usr/local/share/gtksourceview-2.0/styles/
+sudo cp /opt/rdx-user/settings/adaptive.xml /usr/local/share/gtksourceview-2.0/styles/adaptive.xml
 wget -qO /opt/rdx-user-settings/topgrade-config.toml https://github.com/topgrade-rs/topgrade/raw/main/config.example.toml
 sed -i 's/# no_self_update/no_self_update/g' /opt/rdx-user-settings/topgrade-config.toml
 cat <<EOF |sudo tee /usr/local/share/applications/debianrdx.featurebase.app.desktop

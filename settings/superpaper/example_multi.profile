@@ -1,9 +1,8 @@
 name=example_multi
 spanmode=multi
-slideshow=True
-delay=300.0
+slideshow=true
+delay=120
 sortmode=shuffle
-hotkey=control+super+shift+g
 perspective=default
 display0paths=/usr/share/backgrounds/unsplash
 display0paths=/usr/share/backgrounds/unsplash
