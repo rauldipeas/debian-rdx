@@ -2,14 +2,14 @@
 set -e
 find . -name "*splash*" -delete
 wget -q --show-progress https://github.com/rauldipeas/debian-rdx/raw/main/assets/compressed/debian-1080p.zip
-sudo unzip debian-1080p.zip -d boot/grub/themes
-sudo rm debian-1080p.zip boot/grub/themes/darkmatter-theme.py
-sudo mkdir -p boot/grub/fonts
-sudo cp boot/grub/themes/darkmatter/*.pf2 boot/grub/fonts/
-sudo sed -i 's@Live system@Debian GNU/Linux live@g' boot/grub/grub.cfg isolinux/live.cfg
-sudo sed -i 's/(amd64)//g' boot/grub/grub.cfg isolinux/live.cfg
-sudo sed -i 's/(amd64 /(/g' boot/grub/grub.cfg isolinux/live.cfg
-cat <<EOF |sudo tee boot/grub/theme.cfg>/dev/null
+unzip debian-1080p.zip -d boot/grub/themes
+rm debian-1080p.zip boot/grub/themes/darkmatter-theme.py
+mkdir -p boot/grub/fonts
+cp boot/grub/themes/darkmatter/*.pf2 boot/grub/fonts/
+sed -i 's@Live system@Debian GNU/Linux live@' boot/grub/grub.cfg isolinux/live.cfg
+sed -i 's/(amd64)//' boot/grub/grub.cfg isolinux/live.cfg
+sed -i 's/(amd64 /(/' boot/grub/grub.cfg isolinux/live.cfg
+cat <<EOF |tee boot/grub/theme.cfg>/dev/null
 set color_normal=light-gray/black
 set color_highlight=white/dark-gray
 set gfxmode=auto

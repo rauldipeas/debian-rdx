@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-sed -i 's/#WaylandEnable=false/WaylandEnable=false/g' /etc/gdm3/daemon.conf
-cat <<EOF |sudo tee /etc/X11/xorg.conf.d/00-touchpad.conf>/dev/null
+sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/daemon.conf
+cat <<EOF |tee /etc/X11/xorg.conf.d/00-touchpad.conf>/dev/null
 Section "InputClass"
     	Identifier "Touchpad"
     	MatchIsTouchpad "on"

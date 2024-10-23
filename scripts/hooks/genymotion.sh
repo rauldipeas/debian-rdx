@@ -4,7 +4,7 @@ wget -q --show-progress -O /tmp/genymotion.bin "$(wget -qO- https://www.genymoti
 chmod +x /tmp/genymotion.bin
 /tmp/genymotion.bin -y
 rm /tmp/genymotion.bin
-sudo sed -i 's/Icon=/#Icon=/g' /usr/local/share/applications/genymobile-genymotion.desktop
+sed -i 's/Icon=/#Icon=/' /usr/local/share/applications/genymobile-genymotion.desktop
 cat <<EOF |sudo tee -a /usr/local/share/applications/genymobile-genymotion.desktop
 Icon=genymotion
 StartupWMClass=genymotion

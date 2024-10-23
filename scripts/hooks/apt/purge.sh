@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sudo apt autoremove --purge -y\
+apt autoremove --purge -y\
     "*apache*"\
     gnome-accessibility-themes\
     gnome-icon-theme\
