@@ -27,7 +27,7 @@ Exec=xdg-open https://debianrdx.featurebase.app
 EOF
 cat <<EOF |tee /etc/profile.d/rdx-user-settings.sh /etc/X11/Xsession.d/90-rdx-user-settings>/dev/null
 if ! [ -f "\$HOME"/.rdx-user-settings ];then
-    mkdir -p "\$HOME"/.config/systemd
+    mkdir -p "\$HOME"/.config/systemd/user
     mkdir -p "\$HOME"/.local/share/applications
     #bash
     mkdir -p "\$HOME"/.bashrc.d
@@ -42,8 +42,10 @@ if ! [ -f "\$HOME"/.rdx-user-settings ];then
     #gnome-shell-extensions
     cp -r /opt/rdx-user-settings/gnome-shell "\$HOME"/.local/share/
     #pipewire/pulseaudio
-    ln -fs /dev/null "\$HOME"/.config/systemd/pipewire.service
-    ln -fs /dev/null "\$HOME"/.config/systemd/pipewire.socket
+    systemctl stop --user --now pipewire.service
+    systemctl stop --user --now pipewire.socket
+    systemctl mask --user pipewire.service
+    systemctl mask --user pipewire.socket
     #walc
     ln -fs /dev/null "\$HOME"/.local/share/applications/WALC.desktop
     #topgrade
