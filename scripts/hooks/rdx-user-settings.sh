@@ -10,7 +10,6 @@ wget -qO /opt/rdx-user-settings/dconf-settings.ini https://github.com/rauldipeas
 wget -qO /opt/rdx-user-settings/adaptive.xml https://github.com/rauldipeas/debian-rdx/raw/main/settings/adaptive.xml
 mkdir -p /usr/local/share/gtksourceview-4/styles/
 cp /opt/rdx-user-settings/adaptive.xml /usr/local/share/gtksourceview-4/styles/adaptive.xml
-sed -i 's/tango/adaptive/' /usr/share/glib-2.0/schemas/org.gnome.gedit.gschema.xml
 wget -qO /opt/rdx-user-settings/topgrade-config.toml https://github.com/topgrade-rs/topgrade/raw/main/config.example.toml
 sed -i 's/# no_self_update/no_self_update/' /opt/rdx-user-settings/topgrade-config.toml
 cat <<EOF |tee /usr/local/share/applications/debianrdx.featurebase.app.desktop
@@ -28,6 +27,7 @@ Exec=xdg-open https://debianrdx.featurebase.app
 EOF
 cat <<EOF |tee /etc/profile.d/rdx-user-settings.sh /etc/X11/Xsession.d/90-rdx-user-settings>/dev/null
 if ! [ -f "\$HOME"/.rdx-user-settings ];then
+    mkdir -p "\$HOME"/.config/systemd
     mkdir -p "\$HOME"/.local/share/applications
     #bash
     mkdir -p "\$HOME"/.bashrc.d
@@ -41,6 +41,9 @@ if ! [ -f "\$HOME"/.rdx-user-settings ];then
     dconf load / < /opt/rdx-user-settings/dconf-settings.ini
     #gnome-shell-extensions
     cp -r /opt/rdx-user-settings/gnome-shell "\$HOME"/.local/share/
+    #pipewire/pulseaudio
+    ln -fs /dev/null "\$HOME"/.config/systemd/pipewire.service
+    ln -fs /dev/null "\$HOME"/.config/systemd/pipewire.socket
     #walc
     ln -fs /dev/null "\$HOME"/.local/share/applications/WALC.desktop
     #topgrade

@@ -43,6 +43,7 @@ plymouth-themes
 qt5-gtk2-platformtheme
 
 # gui apps
+catfish
 cheese
 clapper
 dialect

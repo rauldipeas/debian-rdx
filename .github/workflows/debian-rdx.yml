@@ -24,10 +24,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Debian build
         run: bash scripts/build.sh
-      - uses: actions/upload-artifact@v4
-        with:
-          name: debian-rdx
-          path: ./debian-rdx*.iso
       - name: MEGA upload
         uses: Difegue/action-megacmd@master
         with:
@@ -46,3 +42,7 @@ jobs:
           sftp_only: true
           ssh_private_key: ''
           password: ${{ secrets.SFTP_PASSWORD }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: debian-rdx
+          path: ./debian-rdx*.iso
